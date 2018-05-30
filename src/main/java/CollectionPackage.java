@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -6,12 +5,12 @@ import java.util.List;
 public class CollectionPackage {
     private Date date;
     private String location;
-    private List<Package> list=new ArrayList<Package>();
+    private List<Package> filteredList;
 
-    public CollectionPackage(Date date, String location, List<Package> list) {
+    public CollectionPackage(Date date, String location, List<Package> filteredList) {
         this.date = date;
         this.location = location;
-        this.list = list;
+        this.filteredList =filteredList;
     }
 
     public Date getDate() {
@@ -22,8 +21,8 @@ public class CollectionPackage {
         return location;
     }
 
-    public List<Package> getList() {
-        return list;
+    public List<Package> getFilteredList() {
+        return filteredList;
     }
 
 

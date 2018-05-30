@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class Package implements Comparable<Package>{
+public class Package {
 
     private String targetLocation;
     private double distance;
@@ -30,39 +30,14 @@ public class Package implements Comparable<Package>{
         return deliveryDate;
     }
 
-    public void setTargetLocation(String targetLocation) {
-        this.targetLocation = targetLocation;
+    public double calculateProfit(double pricePerKM) {
+        return pricePerKM * distance;
     }
 
-    public void setDistance(double distance) {
-        this.distance = distance;
+    @Override
+    public String toString() {
+        return "Date "+ deliveryDate+ " Location "+ targetLocation;
     }
-
-    public void setMerchandiseValue(double merchandiseValue) {
-        this.merchandiseValue = merchandiseValue;
-    }
-
-    public void setDeliveryDate(Date deliveryDate) {
-        this.deliveryDate = deliveryDate;
-    }
-
-    public int compareTo(Package o) {
-        if(o.deliveryDate <= deliveryDate)
-
-
-
-
-
-
-
-
-        
-    }
-
-
-
-
-
 }
 
 
