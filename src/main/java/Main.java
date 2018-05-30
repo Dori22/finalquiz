@@ -8,7 +8,7 @@ public class Main {
     private static List<Package> allPackages = new ArrayList<Package>();
     private static Calendar calendar = Calendar.getInstance();
     private static List<CollectionPackage> allCollectionList = new ArrayList<CollectionPackage>();
-
+    private static BookKeeping bookKeeping=new BookKeeping();
 
     public static void main(String[] args) {
 
@@ -26,47 +26,61 @@ public class Main {
 //        }
 //
         addAllCollectionPackages();
-        System.out.println();
 
+        PackageTread t;
+
+        for (CollectionPackage cp : allCollectionList) {
+            t=new PackageTread(cp, bookKeeping);
+            t.start();
+            try {
+                t.join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("Total profit made was: "+bookKeeping.getTotalProfit());
+        System.out.println("Total value of the merchandise is: "+ bookKeeping.getTotalMerchandise());
     }
 
 
     public static void initializedPackages() {
         calendar.set(2018, Calendar.JUNE, 10);
-        Package package1 = new Package("Alba", 20, 500, calendar.getTime());
+        Package package1 = new Package("Alba", 2, 500, calendar.getTime());
         allPackages.add(package1);
-        package1 = new Package("Alba", 20, 700, calendar.getTime());
+        package1 = new Package("Alba", 2, 700, calendar.getTime());
         allPackages.add(package1);
 
         calendar.set(2018, Calendar.JUNE, 15);
-        package1 = new Package("Aiud", 25, 250, calendar.getTime());
+        package1 = new Package("Aiud", 3, 250, calendar.getTime());
         allPackages.add(package1);
-        package1 = new Package("Aiud", 25, 400, calendar.getTime());
+        package1 = new Package("Aiud", 3, 400, calendar.getTime());
         allPackages.add(package1);
 
         calendar.set(2018, Calendar.JUNE, 20);
-        package1 = new Package("Blaj", 35, 2500, calendar.getTime());
+        package1 = new Package("Blaj", 4, 2500, calendar.getTime());
         allPackages.add(package1);
-        package1 = new Package("Blaj", 35, 4000, calendar.getTime());
+        package1 = new Package("Blaj", 4, 4000, calendar.getTime());
         allPackages.add(package1);
 
         calendar.set(2018, Calendar.JUNE, 28);
-        package1 = new Package("Campia Turzii", 40, 800, calendar.getTime());
+        package1 = new Package("Campia Turzii", 5, 800, calendar.getTime());
         allPackages.add(package1);
-        package1 = new Package("Campia Turzii", 40, 350, calendar.getTime());
+        package1 = new Package("Campia Turzii", 5, 350, calendar.getTime());
         allPackages.add(package1);
 
         calendar.set(2018, Calendar.JUNE, 22);
-        package1 = new Package("Tg. Mures", 80, 1000, calendar.getTime());
+        package1 = new Package("Tg. Mures", 8, 1000, calendar.getTime());
         allPackages.add(package1);
-        package1 = new Package("Tg. Mures", 80, 1350, calendar.getTime());
+        package1 = new Package("Tg. Mures", 8, 1350, calendar.getTime());
         allPackages.add(package1);
 
         calendar.set(2018, Calendar.JUNE, 23);
-        package1 = new Package("Sebes", 100, 1200, calendar.getTime());
+        package1 = new Package("Sebes", 6, 1200, calendar.getTime());
         allPackages.add(package1);
-        package1 = new Package("Sebes", 100, 1450, calendar.getTime());
+        package1 = new Package("Sebes", 6, 1450, calendar.getTime());
         allPackages.add(package1);
+
 
 
     }
@@ -107,6 +121,10 @@ if( foundDuplicate==false) {
 }
         }
     }
+
+
+
+
 
 }
 
